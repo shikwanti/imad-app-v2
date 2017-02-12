@@ -132,7 +132,7 @@ app.get('/:articlename',function(req,res)
 {
     //articlename==article-one
     //article[articlename]=={} content object in  article-one
-    var articlename = rec.params.articlename;    
+    var articlename = req.params.articlename;    
     res.send(createtemplate(articles[articlename]));
 });
 app.get('/ui/style.css', function (req, res) {
