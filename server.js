@@ -4,24 +4,66 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
-
-var articletwo = {
-    title: 'article-two | inderjeet kaur',
-    heading:'ARTICLE-TWO.',
-    date:'7 feb 2017',
-    content:   `<p>
-                    my name is inderjeet kaur . i am from surat gujrat. this is my second article. i am so happy and exited about this . also i am exicted about IMAD course and its modules that comes every week.
-                </p>
-                <p> 
-                    my name is inderjeet kaur . i am from surat gujrat. this is my second article. i am so happy and exited about this . also i am exicted about IMAD course and its modules that comes every week.
-                </p>
-                <p>
-                    my name is inderjeet kaur . i am from surat gujrat. this is my second article. i am so happy and exited about this . also i am exicted about IMAD course and its modules that comes every week.
-                </p>
-                <p>
-                    my name is inderjeet kaur . i am from surat gujrat. this is my second article. i am so happy and exited about this . also i am exicted about IMAD course and its modules that comes every week.
-                </p>`
+var articles = 
+{
+    var 'article-one' :
+        {
+            title: 'article-one | inderjeet kaur',
+            heading:'ARTICLE-ONE.',
+            date:'5 feb 2017',
+            content:   `<p>
+                    my name is inderjeet kaur . i am from surat gujrat. this is my first article. i am so happy and excited about this . also i am exicted about IMAD course and its modules that comes every week.
+                    </p>
+                    <p>
+                    my name is inderjeet kaur . i am from surat gujrat. this is my first article. i am so happy and excited about this . also i am exicted about IMAD course and its modules that comes every week.
+                     </p>
+                     <p>
+                    my name is inderjeet kaur . i am from surat gujrat. this is my first article. i am so happy and excited about this . also i am exicted about IMAD course and its modules that comes every week.
+                    </p>
+                    <p>
+                     my name is inderjeet kaur . i am from surat gujrat. this is my first article. i am so happy and exited about this . also i am exicted about IMAD course and its modules that comes every week.
+                    </p>`
+        
+        },
+    var 'article-two' : 
+        {
+            title: 'article-two | inderjeet kaur',
+            heading:'ARTICLE-TWO.',
+            date:'7 feb 2017',
+            content:   `<p>
+                            my name is inderjeet kaur . i am from surat gujrat. this is my second article. i am so happy and excited about this . also i am exicted about IMAD course and its modules that comes every week.
+                        </p>
+                        <p> 
+                            my name is inderjeet kaur . i am from surat gujrat. this is my second article. i am so happy and excited about this . also i am exicted about IMAD course and its modules that comes every week.
+                        </p>
+                        <p>
+                            my name is inderjeet kaur . i am from surat gujrat. this is my second article. i am so happy and excited about this . also i am exicted about IMAD course and its modules that comes every week.
+                        </p>
+                        <p>
+                            my name is inderjeet kaur . i am from surat gujrat. this is my second article. i am so happy and excited about this . also i am exicted about IMAD course and its modules that comes every week.
+                        </p>`
+        },
+    var 'article-three' : 
+        {
+            title: 'article-three | inderjeet kaur',
+            heading:'ARTICLE-THREE.',
+            date:'10 feb 2017',
+            content:`<p>
+                my name is inderjeet kaur . i am from surat gujrat. this is my third article. i am so happy and excited about this . also i am exicted about IMAD course and its modules that comes every week.
+            </p>
+            <p>
+                my name is inderjeet kaur . i am from surat gujrat. this is my third article. i am so happy and excited about this . also i am exicted about IMAD course and its modules that comes every week.
+            </p>
+            <p>
+                my name is inderjeet kaur . i am from surat gujrat. this is my third article. i am so happy and excited about this . also i am exicted about IMAD course and its modules that comes every week.
+            </p>
+            <p>
+                my name is inderjeet kaur . i am from surat gujrat. this is my third article. i am so happy and excited about this . also i am exicted about IMAD course and its modules that comes every week.
+            </p>`
+        
+        }
 };
+        
 function createtemplate (data)
 {
 var title = data.title;
@@ -86,17 +128,12 @@ return htmlTemplate;
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-app.get('/article-one',function(req,res)
+app.get('/:articlename',function(req,res)
 {
-    res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
-});
-app.get('/article-two',function(req,res)
-{
-    res.send(createtemplate(articletwo));
-});
-app.get('/article-three',function(req,res)
-{
-     res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
+    //articlename==article-one
+    //article(articlename)=={} contents in article-one
+    var articlename = rec.params.articlename;    
+    res.send(createtemplate(articles[articlename]))
 });
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
