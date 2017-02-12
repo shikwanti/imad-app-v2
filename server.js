@@ -20,7 +20,7 @@ var articletwo = {
                 </p>
                 <p>
                     my name is inderjeet kaur . i am from surat gujrat. this is my second article. i am so happy and exited about this . also i am exicted about IMAD course and its modules that comes every week.
-                </p>'
+                </p>`
 };
 function createtemplate (data)
 {
