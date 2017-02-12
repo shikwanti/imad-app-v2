@@ -1,6 +1,6 @@
 body {
     font-family: sans-serif;
-    margin-top: 75px;
+    margin-top: 60px;
 }
 
 .center {
@@ -25,7 +25,6 @@ body {
                     margin: 0 auto    ;
                     font-family: serif;
                     color: orange;
-                    padding-top: 35px;
                     background-color: #fffc9d;
                     padding-left: 20;
                     padding-right: 20;
