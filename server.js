@@ -4,9 +4,9 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
-var articles = 
-{
-    var 'article-one' :
+
+var articles = {
+     'article-one' :
         {
             title: 'article-one | inderjeet kaur',
             heading:'ARTICLE-ONE.',
@@ -25,7 +25,7 @@ var articles =
                     </p>`
         
         },
-    var 'article-two' : 
+     'article-two' : 
         {
             title: 'article-two | inderjeet kaur',
             heading:'ARTICLE-TWO.',
@@ -43,7 +43,7 @@ var articles =
                             my name is inderjeet kaur . i am from surat gujrat. this is my second article. i am so happy and excited about this . also i am exicted about IMAD course and its modules that comes every week.
                         </p>`
         },
-    var 'article-three' : 
+     'article-three' : 
         {
             title: 'article-three | inderjeet kaur',
             heading:'ARTICLE-THREE.',
@@ -131,9 +131,9 @@ app.get('/', function (req, res) {
 app.get('/:articlename',function(req,res)
 {
     //articlename==article-one
-    //article(articlename)=={} contents in article-one
+    //article[articlename]=={} content object in  article-one
     var articlename = rec.params.articlename;    
-    res.send(createtemplate(articles[articlename]))
+    res.send(createtemplate(articles[articlename]));
 });
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
