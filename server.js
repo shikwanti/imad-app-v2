@@ -85,25 +85,6 @@ var htmlTemplate = `
             <a href="/">home</a>
         </div>
         <hr/>
-        <div>
-            <p>
-                
-            </p>
-        </div>
-        <div>
-            <a href="/article-one">article-one</a>
-        </div>
-        <hr/>
-        <div>
-            <p>
-                
-            </p>
-        </div>
-        <div>
-            <a href="/article-three">article-three</a>
-        </div>
-        <hr/>
-        <div>
             <h1>
                 ${heading}
             </h1>
