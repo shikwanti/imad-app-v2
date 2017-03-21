@@ -131,12 +131,29 @@ pool.query('SELECT * FROM test',function(err,result){
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-app.get('/:articlename',function(req,res)
+app.get('/articles:articlename',function(req,res)
 {
     //articlename==article-one
     //article[articlename]=={} content object in  article-one
-    var articlename = req.params.articlename;    
-    res.send(createtemplate(articles[articlename]));
+    
+    pool.query("select * from article1 where title = ",req,params.articleName,function(err,result){
+         if(err)
+   {
+       res.status(500).send(err,toString());
+   }
+   else
+   if(result.rows.length === 0 )
+   {
+       res.status(404).send('article not found');
+   }
+   else
+   {
+   var articleData= result.rows[0];
+   res.send(createtemplate(articleData));
+    }
+        
+    });
+   
 });
 app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
