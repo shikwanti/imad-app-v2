@@ -131,7 +131,7 @@ pool.query('SELECT * FROM test',function(err,result){
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-app.get('/articles:articlename',function(req,res)
+app.get('/articles/:articleName',function(req,res)
 {
     //articlename==article-one
     //article[articlename]=={} content object in  article-one
