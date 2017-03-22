@@ -3,6 +3,7 @@ var morgan = require('morgan');
 var path = require('path');
 var Pool = require('pg').Pool;
 var app = express();
+var crypto=require('crypto');
 app.use(morgan('combined'));
 var config ={
     user : 'shikwanti',
@@ -154,6 +155,15 @@ app.get('/articles/:articleName',function(req,res)
         
     });
    
+});
+function hash(input,salt)
+{
+    var hashed = crypto.pbkdf2Sync('input','salt',10000,512,'sha512' );
+    return hashed;
+}
+app.get('hash/:input',function(req,res){
+   var hashedString = hash(req.params.input,'this-is-a-random-string');
+   res.send(hashedString);
 });
 app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
